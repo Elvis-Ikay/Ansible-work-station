@@ -1,0 +1,16 @@
+---
+- name: Create /opt/devops directory
+  hosts: all
+  become: yes   
+  tasks:
+    - name: Create /opt/devops directory
+      ansible.builtin.file:
+        path: /opt/devops
+        state: directory
+        mode: '0755'
+    - name: Create info.txt with content
+      ansible.builtin.copy:
+        dest: /opt/devops/info.txt
+        content: "Hello from Ansible!\n"
+        mode: '0644'    
+...
