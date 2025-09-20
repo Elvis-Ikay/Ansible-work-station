@@ -1,0 +1,22 @@
+---
+- name: Install HTTP server
+  hosts: n2
+  become: yes
+
+  tasks:
+    - name: install HTTPD
+      ansible.builtin.yum:
+        name: httpd
+        state: present
+
+    - name: start httpd
+      ansible.builtin.service:
+        name: httpd
+        state: started
+
+    - name: enable httpd
+      ansible.builtin.service:
+        name: httpd
+        enabled: yes
+
+...
